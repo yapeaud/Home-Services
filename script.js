@@ -36,7 +36,8 @@
   }
 
   /* Calculateur de lessive */
-  var FEE = 1500;
+  var commune = document.getElementById('calc-commune');
+  var calcMsg = document.getElementById('calc-msg');
   var articles = [
     { id: 'adulte',  name: 'Vêtements adultes',               price: 75,  unit: '75 F / unité' },
     { id: 'robe',    name: 'Robes, pantalons, jeans, pulls',  price: 100, unit: '100 F / unité' },
@@ -61,17 +62,27 @@
       var q = parseInt(document.getElementById('q-' + a.id).value, 10) || 0;
       if (q > 0) { var c = lineCost(a, q); sub += c; lines.push({ a: a, q: q, c: c }); }
     });
-    return { lines: lines, total: lines.length ? sub + FEE : 0 };
+    var opt = commune.options[commune.selectedIndex];
+    // fee : nombre (1500 / 2000), null = à confirmer, undefined = aucune commune choisie
+    var fee = !commune.value ? undefined : (opt.dataset.fee ? Number(opt.dataset.fee) : null);
+    return { lines: lines, fee: fee, total: lines.length ? sub + (fee || 0) : 0 };
   }
+  function feeLabel(fee) {
+    if (fee === undefined) return 'selon commune';
+    if (fee === null) return 'à confirmer';
+    return fmt(fee) + ' F';
+  }
+  function plain(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
   var sumLines = document.getElementById('sum-lines');
   var sumTotal = document.getElementById('sum-total');
   function render() {
     var r = compute();
+    calcMsg.textContent = '';
     sumLines.innerHTML = r.lines.length
       ? r.lines.map(function (l) { return '<li><span>' + l.q + ' × ' + l.a.name + '</span><span>' + fmt(l.c) + ' F</span></li>'; }).join('') +
-        '<li><span>Frais de déplacement</span><span>' + fmt(FEE) + ' F</span></li>'
+        '<li><span>Frais de déplacement' + (typeof r.fee === 'number' ? ' (' + commune.value + ')' : '') + '</span><span>' + feeLabel(r.fee) + '</span></li>'
       : '<li class="empty">Aucun article pour le moment.</li>';
-    sumTotal.textContent = fmt(r.total) + ' F CFA';
+    sumTotal.textContent = fmt(r.total) + ' F CFA' + (r.lines.length && typeof r.fee !== 'number' ? ' + déplacement' : '');
   }
   list.addEventListener('click', function (e) {
     var b = e.target.closest('button[data-step]');
@@ -86,19 +97,35 @@
     if (v > 999) e.target.value = 999;
     render();
   });
+  commune.addEventListener('change', function () {
+    commune.classList.remove('field-error');
+    calcMsg.textContent = '';
+    render();
+  });
   document.getElementById('calc-reset').addEventListener('click', function () {
     list.querySelectorAll('input').forEach(function (i) { i.value = 0; });
+    calcMsg.textContent = '';
     render();
   });
   document.getElementById('calc-send').addEventListener('click', function () {
     var r = compute();
     if (!r.lines.length) {
-      sumLines.innerHTML = '<li class="empty">Ajoutez au moins un article avant l\'envoi.</li>';
+      calcMsg.textContent = 'Ajoutez au moins un article avant l\'envoi.';
       return;
     }
-    var msg = 'Bonjour HOME SERVICES, je souhaite un service de lessive à domicile.\n\nMon récapitulatif :\n' +
-      r.lines.map(function (l) { return '- ' + l.q + ' x ' + l.a.name + ' : ' + fmt(l.c).replace(/ /g, ' ') + ' F'; }).join('\n') +
-      '\n- Frais de déplacement : 1 500 F\n\nTotal estimé : ' + fmt(r.total).replace(/ /g, ' ') + ' F CFA\n\nMerci de me recontacter pour fixer une date.';
+    if (!commune.value) {
+      calcMsg.textContent = 'Choisissez votre commune pour calculer le déplacement.';
+      commune.classList.add('field-error');
+      commune.focus();
+      return;
+    }
+    calcMsg.textContent = '';
+    var feeKnown = typeof r.fee === 'number';
+    var msg = 'Bonjour HOME SERVICES, je souhaite un service de lessive à domicile.\n\nCommune : ' + commune.value + '\n\nMon récapitulatif :\n' +
+      r.lines.map(function (l) { return '- ' + l.q + ' x ' + l.a.name + ' : ' + plain(l.c) + ' F'; }).join('\n') +
+      '\n- Frais de déplacement : ' + (feeKnown ? plain(r.fee) + ' F' : 'à confirmer') +
+      '\n\nTotal estimé : ' + plain(r.total) + ' F CFA' + (feeKnown ? '' : ' + déplacement') +
+      '\n\nMerci de me recontacter pour fixer une date.';
     openWa(msg);
   });
   render();

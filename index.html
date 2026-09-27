@@ -258,7 +258,8 @@
             <tr><th scope="row">Draps, lit 1 place</th><td>dès 150 F / unité</td></tr>
             <tr><th scope="row">Draps, lit 2 places et plus</th><td>200 F / unité</td></tr>
             <tr><th scope="row">Vêtements enfants</th><td>50 F / unité</td></tr>
-            <tr class="fee"><th scope="row">Frais de déplacement</th><td>1 500 F</td></tr>
+            <tr class="fee"><th scope="row">Déplacement – communes d'Abidjan<small>Cocody, Yopougon, Abobo, Adjamé, Attécoubé, Marcory, Koumassi, Port-Bouët, Treichville, Plateau</small></th><td>1 500 F</td></tr>
+            <tr class="fee"><th scope="row">Déplacement – Bingerville, Songon, Grand-Bassam</th><td>2 000 F</td></tr>
           </tbody>
         </table>
         <p style="margin-top:16px;text-align:center"><a class="btn btn-primary" href="#devis">Calculer mon devis</a></p>
@@ -273,10 +274,36 @@
     <div class="section-head reveal">
       <span class="eyebrow">Devis instantané</span>
       <h2>Calculez le prix de votre lessive</h2>
-      <p>Indiquez le nombre d'articles&nbsp;: le total s'affiche en direct, frais de déplacement compris.</p>
+      <p>Choisissez votre commune et indiquez le nombre d'articles&nbsp;: le total s'affiche en direct, frais de déplacement compris.</p>
     </div>
     <div class="calc">
       <div class="card reveal">
+        <div class="calc-commune">
+          <label for="calc-commune">Votre commune</label>
+          <select id="calc-commune">
+            <option value="">Choisir votre commune…</option>
+            <optgroup label="Déplacement 1 500 F">
+              <option data-fee="1500">Abobo</option>
+              <option data-fee="1500">Adjamé</option>
+              <option data-fee="1500">Attécoubé</option>
+              <option data-fee="1500">Cocody</option>
+              <option data-fee="1500">Koumassi</option>
+              <option data-fee="1500">Marcory</option>
+              <option data-fee="1500">Plateau</option>
+              <option data-fee="1500">Port-Bouët</option>
+              <option data-fee="1500">Treichville</option>
+              <option data-fee="1500">Yopougon</option>
+            </optgroup>
+            <optgroup label="Déplacement 2 000 F">
+              <option data-fee="2000">Bingerville</option>
+              <option data-fee="2000">Grand-Bassam</option>
+              <option data-fee="2000">Songon</option>
+            </optgroup>
+            <optgroup label="Autre">
+              <option data-fee="">Autre commune (déplacement à confirmer)</option>
+            </optgroup>
+          </select>
+        </div>
         <ul class="calc-list" id="calc-list"></ul>
       </div>
       <aside class="summary reveal" aria-labelledby="sum-title">
@@ -286,6 +313,7 @@
           <span>Total estimé</span>
           <output id="sum-total" aria-live="polite">0 F CFA</output>
         </div>
+        <p class="calc-msg" id="calc-msg" role="alert"></p>
         <button class="btn btn-wa btn-block" type="button" id="calc-send">
           <svg aria-hidden="true"><use href="#i-wa"/></svg>Envoyer sur WhatsApp
         </button>
