@@ -1,0 +1,227 @@
+/* HOME SERVICES – feuille de styles */
+:root{
+  --navy:#1B2A6B;
+  --blue:#1E88E5;
+  --blue-dark:#1565C0;
+  --green:#3DAE2B;
+  --green-dark:#23801A;
+  --pink:#D81B60;
+  --ink:#1c2340;
+  --muted:#4f5877;
+  --bg:#ffffff;
+  --bg-soft:#f2f7fd;
+  --bg-green:#effaec;
+  --line:#dde5f2;
+  --radius:18px;
+  --shadow:0 6px 24px rgba(27,42,107,.08);
+  --header-h:64px;
+  --font-title:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --font-script:'Dancing Script','Brush Script MT',cursive;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-title);font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg)}
+img,svg{display:block;max-width:100%}
+a{color:var(--blue-dark)}
+h1,h2,h3{font-weight:800;line-height:1.2;color:var(--navy);margin:0 0 .5em}
+h2{font-size:clamp(1.6rem,5vw,2.3rem)}
+h3{font-size:1.15rem}
+p{margin:0 0 1em}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+section{padding:64px 0;scroll-margin-top:var(--header-h)}
+[id]{scroll-margin-top:calc(var(--header-h) + 12px)}
+.script{font-family:var(--font-script);font-weight:700;color:var(--green-dark);font-size:1.6em;line-height:1.1}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dark);background:#e3f0fc;padding:4px 12px;border-radius:99px;margin-bottom:12px}
+.section-head{text-align:center;max-width:680px;margin:0 auto 36px}
+.section-head p{color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;z-index:200}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem/1 var(--font-title);padding:14px 22px;border-radius:99px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;min-height:48px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(27,42,107,.18)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--green-dark);color:#fff}
+.btn-wa:hover{background:#1c6b14}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-outline{background:#fff;color:var(--navy);border-color:var(--navy)}
+.btn-block{width:100%}
+
+/* En-tête */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.header .container{display:flex;align-items:center;gap:12px;height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto}
+.brand svg{width:40px;height:40px}
+.brand-name{font-weight:800;color:var(--navy);font-size:1.05rem;letter-spacing:.02em;line-height:1}
+.brand-name span{color:var(--blue)}
+.btn-call{background:var(--pink);color:#fff;padding:10px 16px;min-height:44px;font-size:.95rem}
+.btn-call:hover{background:#b8154f}
+.menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;color:var(--navy)}
+.menu-toggle svg{width:24px;height:24px}
+@media (max-width:370px){.brand-name{font-size:.88rem}.brand svg{width:34px;height:34px}.btn-call{padding:10px 12px}.header .container{gap:8px}}
+.nav{position:absolute;left:0;right:0;top:var(--header-h);background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);display:none}
+.nav.open{display:block}
+.nav ul{list-style:none;margin:0;padding:8px 16px 16px}
+.nav a{display:block;padding:12px 8px;font-weight:600;color:var(--navy);text-decoration:none;border-radius:10px}
+.nav a:hover{background:var(--bg-soft)}
+@media (min-width:900px){
+  .menu-toggle{display:none}
+  .nav{position:static;display:block;background:none;border:0;box-shadow:none}
+  .nav ul{display:flex;gap:4px;padding:0}
+  .nav a{padding:8px 14px}
+  .brand{margin-right:0}
+  .nav{margin-left:auto}
+}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#e8f3fe 0%,#ffffff 55%,#effaec 100%);padding:48px 0 64px}
+.hero .container{display:grid;gap:32px;align-items:center}
+.hero h1{font-size:clamp(2rem,8vw,3.4rem);margin-bottom:.2em}
+.hero h1 .accent{color:var(--blue)}
+.hero .script{font-size:clamp(1.7rem,6vw,2.4rem);margin-bottom:12px}
+.hero .lead{font-size:1.08rem;color:var(--muted);max-width:520px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-actions .btn{flex:1 1 220px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px 18px;margin:24px 0 0;padding:0;list-style:none;font-size:.92rem;color:var(--navy);font-weight:600}
+.hero-badges li{display:flex;align-items:center;gap:6px}
+.hero-badges svg{width:18px;height:18px;color:var(--green-dark)}
+.hero-art{max-width:420px;margin:0 auto;width:100%}
+@media (min-width:900px){
+  .hero{padding:80px 0 96px}
+  .hero .container{grid-template-columns:1.15fr .85fr}
+  .hero-actions .btn{flex:0 0 auto}
+}
+.bubble{animation:float 6s ease-in-out infinite}
+.bubble:nth-child(2n){animation-duration:8s;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* Cartes & listes */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.icon-round{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#e3f0fc;color:var(--blue-dark);flex:none}
+.icon-round svg{width:32px;height:32px}
+.icon-round.green{background:#e2f5de;color:var(--green-dark)}
+.icon-round.pink{background:#fde6ef;color:var(--pink)}
+.checklist{list-style:none;padding:0;margin:0 0 1em}
+.checklist li{position:relative;padding-left:34px;margin-bottom:12px}
+.checklist li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--green-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
+
+/* Nettoyage */
+.service-intro{display:grid;gap:24px;align-items:start;margin-bottom:48px}
+.service-intro .card{display:flex;gap:18px;flex-direction:column}
+@media (min-width:760px){.service-intro{grid-template-columns:1fr 1fr}}
+.photo-slot{border-radius:var(--radius);background:linear-gradient(135deg,#e3f0fc,#e2f5de);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.photo-slot svg{width:70%;height:auto}
+.zones{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;list-style:none;padding:0;margin:0 0 56px}
+.zones li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 10px;font-weight:600;color:var(--navy);font-size:.95rem;transition:transform .2s ease,border-color .2s ease}
+.zones li:hover{transform:translateY(-3px);border-color:var(--blue)}
+.subtitle{font-size:1.3rem;text-align:center;margin-bottom:20px}
+
+/* Tarifs nettoyage */
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.price-card{position:relative;text-align:center;background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:24px 14px 18px;display:flex;flex-direction:column;align-items:center;gap:4px;transition:border-color .2s ease,transform .2s ease}
+.price-card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.price-card .size{font-weight:800;color:var(--navy);font-size:1.1rem}
+.price{font-weight:800;color:var(--pink);font-size:1.7rem;line-height:1.1;white-space:nowrap}
+.price small{font-size:.55em;font-weight:600}
+.price-card .btn{margin-top:12px;padding:10px 16px;min-height:44px;font-size:.9rem;width:100%}
+.price-card.popular{border-color:var(--green)}
+.price-card .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green-dark);color:#fff;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.included{margin-top:24px;background:var(--bg-green);border-radius:var(--radius);padding:20px 22px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:center}
+.included strong{color:var(--navy)}
+.included span{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink)}
+.included svg{width:22px;height:22px;color:var(--green-dark)}
+
+/* Lessive */
+.bg-soft{background:var(--bg-soft)}
+.laundry{display:grid;gap:28px;align-items:start}
+@media (min-width:900px){.laundry{grid-template-columns:.9fr 1.1fr}}
+.quote{font-size:1.1rem;color:var(--ink);border-left:4px solid var(--green);padding-left:16px}
+.price-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.price-table caption{text-align:left;font-weight:800;color:var(--navy);font-size:1.15rem;padding-bottom:10px}
+.price-table th,.price-table td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.97rem}
+.price-table th{font-weight:600}
+.price-table td{text-align:right;font-weight:800;color:var(--pink);white-space:nowrap}
+.price-table tr:last-child th,.price-table tr:last-child td{border-bottom:0}
+.price-table tr.fee{background:#fff7fa}
+.price-table tr.fee th{color:var(--navy)}
+
+/* Calculateur */
+.calc{display:grid;gap:20px;align-items:start}
+@media (min-width:900px){.calc{grid-template-columns:1.4fr 1fr}}
+.calc-list{list-style:none;margin:0;padding:0}
+.calc-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.calc-row:last-child{border-bottom:0}
+.calc-row .label{flex:1;min-width:0}
+.calc-row .label strong{display:block;font-weight:600;color:var(--navy);font-size:.97rem;line-height:1.3}
+.calc-row .label small{color:var(--muted)}
+.stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:99px;overflow:hidden;flex:none}
+.stepper button{width:40px;height:40px;border:0;background:var(--bg-soft);color:var(--navy);font:800 1.25rem/1 var(--font-title);cursor:pointer}
+.stepper button:hover{background:#e3f0fc}
+.stepper input{width:48px;height:40px;border:0;text-align:center;font:600 1rem var(--font-title);color:var(--ink);-moz-appearance:textfield;appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.summary{position:sticky;top:calc(var(--header-h) + 16px);background:var(--navy);color:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.summary h3{color:#fff}
+.summary-lines{list-style:none;padding:0;margin:0 0 12px;font-size:.93rem;color:#d6ddf5}
+.summary-lines li{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.summary-lines .empty{font-style:italic}
+.summary-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;margin-bottom:18px;gap:12px}
+.summary-total span{font-weight:600}
+.summary-total output{font-size:1.8rem;font-weight:800;color:#fff;white-space:nowrap}
+.summary .note{font-size:.8rem;color:#c2cbee;margin:12px 0 0}
+.btn-reset{background:transparent;border:0;color:#c2cbee;text-decoration:underline;cursor:pointer;font:inherit;font-size:.85rem;margin-top:10px;padding:4px}
+
+/* Pourquoi nous */
+.why{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.why .card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:22px}
+.why h3{margin:0;font-size:1.02rem}
+
+/* Réservation */
+.booking{display:grid;gap:28px;align-items:start}
+@media (min-width:900px){.booking{grid-template-columns:.8fr 1.2fr}}
+.contact-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.contact-list a{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--navy);font-weight:600}
+.contact-list a:hover{border-color:var(--blue)}
+.contact-list .icon-round{width:46px;height:46px}
+.contact-list .icon-round svg{width:22px;height:22px}
+.contact-list small{display:block;color:var(--muted);font-weight:400}
+form .grid{display:grid;gap:16px}
+@media (min-width:640px){form .grid{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}}
+label{display:block;font-weight:600;color:var(--navy);font-size:.93rem;margin-bottom:6px}
+label .opt{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:1rem var(--font-title);color:var(--ink);background:#fff;border:1.5px solid #c9d4e8;border-radius:12px;padding:12px 14px;min-height:48px}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,136,229,.2)}
+.field-error{border-color:var(--pink)!important}
+.form-msg{min-height:1.4em;color:var(--pink);font-weight:600;font-size:.92rem;margin:12px 0 0}
+
+/* Pied de page */
+.footer{background:var(--navy);color:#d6ddf5;padding:48px 0 96px;font-size:.95rem}
+.footer .grid{display:grid;gap:28px}
+@media (min-width:760px){.footer .grid{grid-template-columns:1.3fr 1fr 1fr}}
+.footer h3{color:#fff;font-size:1rem}
+.footer a{color:#fff}
+.footer .brand-name{color:#fff}
+.footer .brand-name span{color:#7dbdf5}
+.footer .script{color:#8fdc82;font-size:1.5rem;margin:12px 0 4px}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer li{margin-bottom:8px}
+.trust{margin:36px 0 0;padding:18px;border-radius:14px;background:rgba(255,255,255,.07);text-align:center;color:#fff;font-weight:600}
+.copy{text-align:center;font-size:.82rem;color:#a9b3db;margin-top:20px}
+
+/* WhatsApp flottant */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:150;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25);transition:transform .2s ease}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.45);opacity:0}}
+
+/* Animations au défilement (activées seulement si JS) */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
