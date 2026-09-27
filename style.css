@@ -53,14 +53,14 @@ section{padding:64px 0;scroll-margin-top:var(--header-h)}
 .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
 .header .container{display:flex;align-items:center;gap:12px;height:var(--header-h)}
 .brand{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto}
-.brand svg{width:40px;height:40px}
+.brand img{height:40px;width:auto}
 .brand-name{font-weight:800;color:var(--navy);font-size:1.05rem;letter-spacing:.02em;line-height:1}
 .brand-name span{color:var(--blue)}
 .btn-call{background:var(--pink);color:#fff;padding:10px 16px;min-height:44px;font-size:.95rem}
 .btn-call:hover{background:#b8154f}
 .menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;color:var(--navy)}
 .menu-toggle svg{width:24px;height:24px}
-@media (max-width:370px){.brand-name{font-size:.88rem}.brand svg{width:34px;height:34px}.btn-call{padding:10px 12px}.header .container{gap:8px}}
+@media (max-width:370px){.brand-name{font-size:.88rem}.brand img{height:34px}.btn-call{padding:10px 12px}.header .container{gap:8px}}
 .nav{position:absolute;left:0;right:0;top:var(--header-h);background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);display:none}
 .nav.open{display:block}
 .nav ul{list-style:none;margin:0;padding:8px 16px 16px}
@@ -209,6 +209,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);bo
 .footer a{color:#fff}
 .footer .brand-name{color:#fff}
 .footer .brand-name span{color:#7dbdf5}
+.footer .logo-footer{height:48px;width:auto;background:#fff;border-radius:10px;padding:4px}
 .footer .script{color:#8fdc82;font-size:1.5rem;margin:12px 0 4px}
 .footer ul{list-style:none;padding:0;margin:0}
 .footer li{margin-bottom:8px}
